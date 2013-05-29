@@ -14,7 +14,13 @@ var player;
 function onYouTubeIframeAPIReady() {
   player = new YT.Player('player', {
     videoId: 's7L2PVdrb_8',
-    playerVars: { 'autoplay': 1, 'controls': 0 },
+    playerVars: {
+        'autoplay': 1,
+        'controls': 0,
+        'modestbranding': 1,
+        'showinfo': 0,
+        'start': 8.9,
+        'loop': 1 },
     events: {
       'onReady': onPlayerReady,
       'onPlaybackQualityChange': onPlayerPlaybackQualityChange,
