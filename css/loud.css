@@ -1,0 +1,17 @@
+
+html, body {
+    height: 100%;
+    width: 100%;
+}
+
+#player {
+    position: absolute;
+    top: -100000px !important;
+}
+
+#gif {
+    background: transparent url(http://i.imgur.com/FvKyA.gif) center center no-repeat;
+    background-size: cover;
+    height: 100%;
+    width: 100%;
+}
