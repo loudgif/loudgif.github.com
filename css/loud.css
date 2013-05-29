@@ -1,12 +1,37 @@
+/*
+LOUD GIFS SAVE LIVES
+*/
 
 html, body {
+    font-family: 'Open Sans', Helvetica, sans-serif;
     height: 100%;
     width: 100%;
+
+    background: #333;
+}
+
+a {
+    color: black;
+}
+
+a:hover {
+    color: hotpink;
+}
+
+h1, h2, h3, h4, h5, h6 {
+
+}
+
+h1 {
+    font-weight: 800;
+    font-style: italic;
 }
 
 #player {
     position: absolute;
+    left: 0px;
     top: -100000px !important;
+    z-index: 0;
 }
 
 #gif {
@@ -16,4 +41,64 @@ html, body {
     background-size: cover;
     height: 100%;
     width: 100%;
+    z-index: 1;
+}
+
+/* Meta Bar */
+
+#meta {
+    bottom: 0px;
+    left: 0px;
+    padding: 0 20px;
+    position: absolute;
+    width: 100%;
+    z-index: 2;
+}
+
+#meta .el {
+    background: #fff;
+    border-radius: 2px 2px 0 0;
+    color: #000;
+    display: inline-block;
+    float: left;
+    font-size: 18px;
+    font-weight: 800;
+    height: 40px;
+    line-height: 40px;
+    margin: 0 10px 0 0;
+    padding: 0 10px;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+
+#meta .el.loud {
+    background: rgba(256, 0, 130, 0.7);
+    color: white;
+}
+
+#meta .el:hover {
+    background: rgba(0,0,0,0.5);
+    color: #fff;
+}
+#meta .logo {
+    font-size: 24px;
+    padding: 0 20px;
+}
+
+#meta [class*="icon-"] {
+    font-size: 0px;
+}
+#meta [class*="icon-"]:before {
+    font-size: 24px;
+}
+
+#meta .el.square {
+    width: 40px;
+    padding: 0;
+}
+
+#meta .right .el {
+    float: right;
+    margin: 0 0 0 10px;
 }

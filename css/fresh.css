@@ -63,30 +63,6 @@ h6 {
   font-weight:bold;
   }
 
-h1 {
-  font-size:32px;
-  margin-bottom:20px;
-  line-height:1em;
-  }
-
-h2 {
-  font-size:28px;
-  margin-bottom:20px;
-  line-height:1.25em;
-  }
-
-h3 {
-  font-size:20px;
-  margin-bottom:20px;
-  line-height:1.5em;
-  }
-
-h4, h5 {
-  font-size:15px;
-  margin-bottom:0;
-  line-height:1.67em;
-  }
-
 p {
   margin:0 0 20px;
   }
