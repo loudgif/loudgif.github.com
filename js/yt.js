@@ -1,10 +1,14 @@
 // Youtube Embed Code
 
-var tag = document.createElement('script');
+$(document).ready(function() {
 
-tag.src = "https://www.youtube.com/iframe_api";
-var firstScriptTag = document.getElementsByTagName('script')[0];
-firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+    var tag = document.createElement('script');
+
+    tag.src = "https://www.youtube.com/iframe_api";
+    var firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+});
 
 var player;
 
@@ -31,6 +35,7 @@ function onYouTubeIframeAPIReady() {
 }
 
 function onPlayerReady(event) {
+    $('#gif').css('background-image','url(http://i.imgur.com/' + GIFID + '.gif)');
     event.target.playVideo();
 }
 

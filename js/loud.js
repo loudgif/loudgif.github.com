@@ -30,7 +30,3 @@ if (START === 'null') {
 if (END === 'null') {
     END = 0;
 }
-
-$(document).ready(function() {
-    $('#gif').css('background-image','url(http://i.imgur.com/' + GIFID + '.gif)');
-});
