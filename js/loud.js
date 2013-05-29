@@ -30,3 +30,34 @@ if (START === 'null') {
 if (END === 'null') {
     END = 0;
 }
+
+$(document).ready(function() {
+
+    // Init YouTube Video
+    var tag = document.createElement('script');
+
+    tag.src = "https://www.youtube.com/iframe_api";
+    var firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+
+    // Click listens
+    var ANIM_SPEED = 350;
+
+    $('#logo').on('click',function(){
+        var $this = $(this);
+
+        if($this.hasClass('active')) {
+            $('#wrapper').animate({ top: '0px'}, ANIM_SPEED);
+            $('#info').animate({ top: '100%'}, ANIM_SPEED);
+        } else {
+            $('#wrapper').animate({ top: '-30%'}, ANIM_SPEED);
+            $('#info').animate({ top: '70%'}, ANIM_SPEED);
+        }
+
+        $this.toggleClass('active');
+
+
+    });
+
+});

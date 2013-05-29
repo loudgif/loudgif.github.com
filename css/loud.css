@@ -34,11 +34,21 @@ h1 {
     z-index: 0;
 }
 
+#wrapper {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    height: 100%;
+    width: 100%;
+    z-index: 5;
+}
+
 #gif {
     background-color: transparent;
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
+    position: absolute;
     height: 100%;
     width: 100%;
     z-index: 1;
@@ -66,22 +76,28 @@ h1 {
     height: 40px;
     line-height: 40px;
     margin: 0 10px 0 0;
-    padding: 0 10px;
+    padding: 0 15px;
     text-align: center;
     text-transform: uppercase;
-}
-
-
-#meta .el.loud {
-    background: rgba(256, 0, 130, 0.7);
-    color: white;
 }
 
 #meta .el:hover {
     background: rgba(0,0,0,0.5);
     color: #fff;
 }
+
+#meta .el.loud {
+    background: rgba(256, 0, 130, 0.7);
+    color: white;
+}
+
+#meta .el.loud:hover {
+    background: rgba(256, 0, 130, 1);
+}
+
 #meta .logo {
+    /*background: white url(../img/logo.png) 10px center no-repeat;*/
+    /*background-size: 44px;*/
     font-size: 24px;
     padding: 0 20px;
 }
@@ -101,4 +117,17 @@ h1 {
 #meta .right .el {
     float: right;
     margin: 0 0 0 10px;
+}
+
+/* Information section */
+
+#info {
+    background: #000;
+    color: #fff;
+    position: absolute;
+    height: 30%;
+    top: 100%;
+    left: 0px;
+    width: 100%;
+    z-index: 2;
 }
