@@ -10,7 +10,9 @@ html, body {
 }
 
 #gif {
-    background: transparent url(http://i.imgur.com/FvKyA.gif) center center no-repeat;
+    background-color: transparent;
+    background-position: center center;
+    background-repeat: no-repeat;
     background-size: cover;
     height: 100%;
     width: 100%;
