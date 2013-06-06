@@ -22,23 +22,46 @@
 <div id="player"></div>
 
 <div id="wrapper">
+    <h1 id="message">
+        Loud beats save lives!!!
+    </h1>
     <div id="gif"></div>
 
     <div id="meta" class="clearfix">
         <div class="col6">
-            <h1><a href="#" id="logo" class="el logo">LOUDGIF</a></h1>
+            <h1><a href="#" id="logo" class="el logo show-screen">LOUDGIF</a></h1>
             <!-- <a href="#" id="click-info" class="el square icon-skull">&nbsp;</a> -->
         </div>
         <div class="col6 right">
-            <a id="new-lg" href="#" class="el loud">
+            <a id="new-loudgif" href="#" class="el loud show-screen">
                 Create your own
             </a>
         </div>
     </div>
 </div>
 
-<div id="info" class="pad2">
-    Information
+<div id="info" class="black offscreen">
+    <div class="col6 pad2 el">
+        Left
+    </div>
+    <div id="create" class="col6 pad2 el bright">
+
+        <div class="field clearfix">
+            <label for="input-image">Image URL</label>
+            <input type="text" id="input-image" />
+        </div>
+        <div class="field clearfix">
+            <label for="input-image">YouTube URL</label>
+            <input type="text" id="input-video" />
+        </div>
+        <div class="field clearfix">
+            <label for="input-image">Text <span>(Totally optional)</span></label>
+            <input type="text" id="input-text" maxlength="200" class="uppercase" />
+        </div>
+        <div class="submit">
+            <input type="submit" value="Create" class="button" />
+        </div>
+    </div>
 </div>
 
 </body>

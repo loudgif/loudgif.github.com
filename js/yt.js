@@ -25,7 +25,7 @@ function onYouTubeIframeAPIReady() {
 }
 
 function onPlayerReady(event) {
-    $('#gif').css('background-image','url(http://i.imgur.com/' + GIFID + '.gif)');
+    showGif();
     event.target.playVideo();
 }
 

@@ -16,7 +16,7 @@ END = getParam('e');
 // Return defaults
 // TODO: Make this intro page instead
 if (VIDEOID === 'null') {
-    VIDEOID = 's7L2PVdrb_8';
+    // VIDEOID = 's7L2PVdrb_8';
 }
 
 if (GIFID === 'null') {
@@ -33,31 +33,59 @@ if (END === 'null') {
 
 $(document).ready(function() {
 
-    // Init YouTube Video
-    var tag = document.createElement('script');
+    function showGif() {
+        $('#gif').css('background-image','url(http://i.imgur.com/' + GIFID + '.gif)');
+    }
 
-    tag.src = "https://www.youtube.com/iframe_api";
-    var firstScriptTag = document.getElementsByTagName('script')[0];
-    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+    if (VIDEOID !== 'null') {
+        // Init YouTube Video
+        var tag = document.createElement('script');
 
+        tag.src = "https://www.youtube.com/iframe_api";
+        var firstScriptTag = document.getElementsByTagName('script')[0];
+        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+    } else showGif();
 
-    // Click listens
-    var ANIM_SPEED = 350;
+    // -------------------------------------------------------------------------------------
+    // Events
 
-    $('#logo').on('click',function(){
-        var $this = $(this);
+    var ANIM_SPEED = 300,       // milliseconds
+        OFFSCREEN_HEIGHT = 50,  // percentage
+        windowWidth = (window.innerWidth > 0) ? window.innerWidth : screen.width,
+        $info = $('#info'),
+        $meta = $('#meta'),
+        $wrapper = $('#wrapper');
 
-        if($this.hasClass('active')) {
-            $('#wrapper').animate({ top: '0px'}, ANIM_SPEED);
-            $('#info').animate({ top: '100%'}, ANIM_SPEED);
+    // Information section
+    $('.show-screen').on('click',function(){
+        if($meta.hasClass('active')) {
+            toggleScreen('off');
         } else {
-            $('#wrapper').animate({ top: '-30%'}, ANIM_SPEED);
-            $('#info').animate({ top: '70%'}, ANIM_SPEED);
+            toggleScreen('on');
         }
-
-        $this.toggleClass('active');
-
-
+        return false;
     });
+
+    $('#wrapper').on('click',function(){
+        toggleScreen('off');
+    });
+
+    // Debug init
+    if(getParam('sc')) {
+        toggleScreen('on');
+    }
+
+    function toggleScreen(direction) {
+        if(direction === 'on') {
+            $wrapper.animate({ top: (-1 * OFFSCREEN_HEIGHT) + '%'}, ANIM_SPEED);
+            $info.animate({ top: (100 - OFFSCREEN_HEIGHT) + '%'}, ANIM_SPEED);
+            return $meta.addClass('active');
+        } else {
+            $wrapper.animate({ top: '0px'}, ANIM_SPEED);
+            $info.animate({ top: '100%'}, ANIM_SPEED);
+            return $meta.removeClass('active');
+        }
+    }
+
 
 });

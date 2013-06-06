@@ -6,8 +6,12 @@ html, body {
     font-family: 'Open Sans', Helvetica, sans-serif;
     height: 100%;
     width: 100%;
-
     background: #333;
+    overflow: hidden;
+}
+
+a, input {
+    transition: all 200ms ease-in;
 }
 
 a {
@@ -15,7 +19,7 @@ a {
 }
 
 a:hover {
-    color: hotpink;
+    color: #FF0082;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -27,11 +31,49 @@ h1 {
     font-style: italic;
 }
 
+/* Share classes */
+
+.black {
+    background: #000;
+    color: #fff;
+}
+
+.bright {
+    background: #FF0082;
+    color: #fff;
+}
+
+.offscreen {
+    position: absolute;
+    height: 100%;
+    top: 100%;
+    left: 0px;
+    width: 100%;
+    z-index: 2;
+}
+
+.offscreen .el {
+    height: 100%;
+}
+
+.uppercase {
+    text-transform: uppercase;
+}
+
+/* Objects */
+
 #player {
     position: absolute;
     left: 0px;
     top: -100000px !important;
     z-index: 0;
+}
+
+#content {
+    height: 100%;
+    width: 100%;
+    border: 2px solid green;
+    overflow: hidden;
 }
 
 #wrapper {
@@ -52,6 +94,19 @@ h1 {
     height: 100%;
     width: 100%;
     z-index: 1;
+}
+
+h1#message {
+    background: none;
+    color: white;
+    font-size: 8em;
+    line-height: 100%;
+    position: absolute;
+    text-align: center;
+    text-transform: uppercase;
+    top: 3%;
+    width: 100%;
+    z-index: 2;
 }
 
 /* Meta Bar */
@@ -91,15 +146,19 @@ h1 {
     color: white;
 }
 
+#meta.active .el.loud,
 #meta .el.loud:hover {
     background: rgba(256, 0, 130, 1);
 }
 
 #meta .logo {
-    /*background: white url(../img/logo.png) 10px center no-repeat;*/
-    /*background-size: 44px;*/
     font-size: 24px;
     padding: 0 20px;
+}
+
+#meta.active .logo {
+    background: #000;
+    color: #fff;
 }
 
 #meta [class*="icon-"] {
@@ -122,12 +181,89 @@ h1 {
 /* Information section */
 
 #info {
-    background: #000;
-    color: #fff;
-    position: absolute;
-    height: 30%;
-    top: 100%;
-    left: 0px;
+}
+
+/* Create section */
+#create .field {
     width: 100%;
-    z-index: 2;
+    margin-bottom: 15px;
+}
+
+#create #input-text {
+    font-weight: 800;
+    font-style: italic;
+}
+
+#create .submit {
+    border-top: 2px dotted #fff;
+    margin-top: 20px;
+    padding-top: 30px;
+}
+
+
+
+label, .button {
+    display: block;
+    font-weight: 800;
+    line-height: 1.5em;
+    text-transform: uppercase;
+}
+
+label span {
+    color: #88004B;
+    opacity: 0.6;
+    padding-left: 2%;
+}
+
+input {
+    font-family: 'Open Sans', Helvetica, sans-serif;
+    border: none;
+}
+
+input[type=text] {
+    background: #fff;
+    border: none;
+    border-radius: 2px;
+    color: #FF0082;
+    font-size: 16px;
+    font-weight: 400;
+    padding: 12px;
+    width: 100%;
+}
+
+.button {
+    /*background: rgba(0,0,0,0.8);*/
+    background: #00FFFD;
+    border-bottom: 2px solid #B3005B;
+    border-radius: 4px;
+    color: rgba(0,0,0,0.6);
+    font-size: 24px;
+    font-weight: 800;
+    /*font-style: italic;*/
+    padding: 15px;
+    text-align: center;
+    width: 100%;
+}
+
+.button:hover {
+    background: #00FF7E;
+}
+
+/* Mobile */
+
+@media only screen and (max-width:640px) {
+    h1#message {
+        font-size: 40px;
+    }
+    #meta {
+        padding: 0;
+    }
+    #meta .col6 {
+        float: left;
+        width: 50%;
+    }
+    #meta a {
+        font-size: 16px !important;
+        width: 100%;
+    }
 }
