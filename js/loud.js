@@ -31,11 +31,67 @@ if (END === 'null') {
     END = 0;
 }
 
-$(document).ready(function() {
 
-    function showGif() {
-        $('#gif').css('background-image','url(http://i.imgur.com/' + GIFID + '.gif)');
-    }
+// Misc Functions
+
+function showGif() {
+    $('#gif').css('background-image','url(http://i.imgur.com/' + GIFID + '.gif)');
+}
+
+// Youtube Embed Code
+
+var player;
+
+function onYouTubeIframeAPIReady() {
+    player = new YT.Player('player', {
+        videoId: VIDEOID,
+        playerVars: {
+            'autoplay': 1,
+            'controls': 0,
+            'end': END,
+            'modestbranding': 1,
+            'playlist': VIDEOID,
+            'showinfo': 0,
+            'start': START,
+            'loop': 1
+        },
+        events: {
+            'onReady': onPlayerReady,
+            'onPlaybackQualityChange': onPlayerPlaybackQualityChange,
+            'onStateChange': onPlayerStateChange,
+            'onError': onPlayerError
+        }
+    });
+}
+
+function onPlayerReady(event) {
+    setTimeout(function() {
+        showGif();
+    }, 200);
+    event.target.playVideo();
+}
+
+function onPlayerPlaybackQualityChange(event){
+
+}
+
+function onPlayerError(event) {
+
+}
+
+// var done = false;
+function onPlayerStateChange(event) {
+// if (event.data == YT.PlayerState.PLAYING && !done) {
+//   setTimeout(stopVideo, 6000);
+//   done = true;
+// }
+}
+
+// function stopVideo() {
+//   player.stopVideo();
+// }
+
+$(document).ready(function() {
 
     if (VIDEOID !== 'null') {
         // Init YouTube Video
@@ -71,7 +127,7 @@ $(document).ready(function() {
     });
 
     // Debug init
-    if(getParam('sc')) {
+    if(getParam('sc') !== 'null') {
         toggleScreen('on');
     }
 
