@@ -46,7 +46,7 @@ function parseYoutubeId(url) {
 }
 
 function showGif() {
-    $('#gif').css('background-image','url(' + decodeURIComponent(GIFID) + ')');
+    $('#gif').css('background-image','url(' + unescape(GIFID) + ')');
 }
 
 // Youtube Embed Code
@@ -205,9 +205,9 @@ $(document).ready(function() {
         },
         submitHandler: function(form) {
             var loudgif = {
-                gif:    encodeURIComponent($('#loudimage').val()),
+                gif:    escape($('#loudimage').val()),
                 video:  parseYoutubeId($('#loudvideo').val()),
-                text:   encodeURIComponent($('#loudtext').val())
+                text:   escape($('#loudtext').val())
             };
 
             // Build string
