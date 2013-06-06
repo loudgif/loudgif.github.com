@@ -7,7 +7,7 @@ html, body {
     height: 100%;
     width: 100%;
     background: #333;
-    overflow: hidden;
+    /*overflow: hidden;*/
 }
 
 a, input {
@@ -45,7 +45,7 @@ h1 {
 
 .offscreen {
     position: absolute;
-    height: 100%;
+    height: 60%;
     top: 100%;
     left: 0px;
     width: 100%;
@@ -137,7 +137,7 @@ h1#message {
 }
 
 #meta .el:hover {
-    background: rgba(0,0,0,0.5);
+    background: #000;
     color: #fff;
 }
 
@@ -189,7 +189,7 @@ h1#message {
     margin-bottom: 15px;
 }
 
-#create #input-text {
+#create #loudtext {
     font-weight: 800;
     font-style: italic;
 }
@@ -213,6 +213,10 @@ label span {
     color: #88004B;
     opacity: 0.6;
     padding-left: 2%;
+}
+
+label.error {
+    color: #F8EB47;
 }
 
 input {

@@ -9,6 +9,7 @@
 <link rel="stylesheet" type="text/css" href="css/icons.css" media="screen">
 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+<script src="js/jquery.validate.min.js"></script>
 <script src="js/loud.js"></script>
 
 <title>LOUD GIFS SAVE LIVES</title>
@@ -43,22 +44,23 @@
         Left
     </div>
     <div id="create" class="col6 pad2 el bright">
-
-        <div class="field clearfix">
-            <label for="input-image">Image URL</label>
-            <input type="text" id="input-image" />
-        </div>
-        <div class="field clearfix">
-            <label for="input-image">YouTube URL</label>
-            <input type="text" id="input-video" />
-        </div>
-        <div class="field clearfix">
-            <label for="input-image">Text <span>(Totally optional)</span></label>
-            <input type="text" id="input-text" maxlength="200" class="uppercase" />
-        </div>
-        <div class="submit">
-            <input type="submit" value="Create" class="button" />
-        </div>
+        <form action="" method="get" id="newLoudgif" name="newLoudgif">
+            <div class="field clearfix">
+                <label for="loudimage">Image URL</label>
+                <input type="text" id="loudimage" name="loudimage" />
+            </div>
+            <div class="field clearfix">
+                <label for="loudvideo">YouTube URL</label>
+                <input type="text" id="loudvideo" name="loudvideo" />
+            </div>
+            <div class="field clearfix">
+                <label for="loudtext">Text <span>(Totally optional)</span></label>
+                <input type="text" id="loudtext" name="loudtext" maxlength="200" class="uppercase" />
+            </div>
+            <div class="submit">
+                <input type="submit" id="submit" value="Create" class="button" />
+            </div>
+        </form>
     </div>
 </div>
 

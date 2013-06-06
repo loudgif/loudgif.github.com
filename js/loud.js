@@ -21,7 +21,7 @@ if (VIDEOID === 'null') {
 }
 
 if (GIFID === 'null') {
-    GIFID = 'FvKyA';
+    GIFID = 'http://i.imgur.com/FvKyA.gif';
 }
 
 if (START === 'null') {
@@ -35,8 +35,18 @@ if (END === 'null') {
 
 // Misc Functions
 
+function parseYoutubeId(url) {
+    var regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+    var match = url.match(regExp);
+    if (match&&match[2].length==11){
+        return match[2];
+    }else{
+        return false;
+    }
+}
+
 function showGif() {
-    $('#gif').css('background-image','url(http://i.imgur.com/' + GIFID + '.gif)');
+    $('#gif').css('background-image','url(' + decodeURIComponent(GIFID) + ')');
 }
 
 // Youtube Embed Code
@@ -111,7 +121,7 @@ $(document).ready(function() {
     // Events
 
     var ANIM_SPEED = 300,       // milliseconds
-        OFFSCREEN_HEIGHT = 50,  // percentage
+        OFFSCREEN_HEIGHT = 60,  // percentage
         windowWidth = (window.innerWidth > 0) ? window.innerWidth : screen.width,
         $info = $('#info'),
         $meta = $('#meta'),
@@ -131,6 +141,14 @@ $(document).ready(function() {
         toggleScreen('off');
     });
 
+    $(window).scroll(function (e) {
+        if($(this).scrollTop() > 0) {
+            $meta.addClass('active');
+        } else {
+            $meta.removeClass('active');
+        }
+    });
+
     // Debug init
     if(getParam('sc') !== 'null') {
         toggleScreen('on');
@@ -138,15 +156,73 @@ $(document).ready(function() {
 
     function toggleScreen(direction) {
         if(direction === 'on') {
-            $wrapper.animate({ top: (-1 * OFFSCREEN_HEIGHT) + '%'}, ANIM_SPEED);
-            $info.animate({ top: (100 - OFFSCREEN_HEIGHT) + '%'}, ANIM_SPEED);
+            $('html, body').animate({
+                scrollTop: (OFFSCREEN_HEIGHT / 100) * $info.offset().top
+            }, ANIM_SPEED);
             return $meta.addClass('active');
         } else {
-            $wrapper.animate({ top: '0px'}, ANIM_SPEED);
-            $info.animate({ top: '100%'}, ANIM_SPEED);
+            $('html, body').animate({
+                scrollTop: 0
+            }, ANIM_SPEED);
             return $meta.removeClass('active');
         }
     }
+
+    // Create form submit
+    // $('#submit').click(function() {
+    //     if($('#input-image').)
+    //     return false;
+    // });
+
+    $("#newLoudgif").validate({
+        rules: {
+            loudimage: {
+                required: true,
+                url: true
+            },
+            loudvideo: {
+                required: true,
+                url: true
+            },
+            loudtext: {
+                required: false,
+                maxlength: 200
+            }
+        },
+        messages: {
+            loudimage: {
+                required: 'Need an image here, friend',
+                url: 'This has to be a URL. You know, HTTP:// and so on and so forth.'
+            },
+            loudvideo: {
+                required: 'What\'s a loudgif without sound?',
+                url: 'This has to be a URL'
+            },
+            loudtext: {
+                required: false,
+                maxlength: 'Sorry, we cut you off at 200 characters'
+            }
+        },
+        submitHandler: function(form) {
+            var loudgif = {
+                gif:    encodeURIComponent($('#loudimage').val()),
+                video:  parseYoutubeId($('#loudvideo').val()),
+                text:   encodeURIComponent($('#loudtext').val())
+            };
+
+            // Build string
+            var loudgif_url = 'http://loudgif.com/?g=' + loudgif.gif + '&v=' + loudgif.video;
+
+            if(loudgif.text !== '') {
+                loudgif_url += '&t=' + loudgif.text;
+            }
+
+
+            console.log(loudgif_url);
+
+            return false;
+        }
+    });
 
 
 });
