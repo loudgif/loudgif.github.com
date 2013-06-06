@@ -99,7 +99,7 @@ h1 {
 h1#message {
     background: none;
     color: white;
-    font-size: 8em;
+    font-size: 6em;
     line-height: 100%;
     position: absolute;
     text-align: center;
@@ -200,7 +200,7 @@ h1#message {
     padding-top: 30px;
 }
 
-
+/* Forms */
 
 label, .button {
     display: block;

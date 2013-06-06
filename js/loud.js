@@ -10,6 +10,7 @@ function getParam(name) {
 
 VIDEOID = getParam('v');
 GIFID = getParam('g');
+TEXT = getParam('t');
 START = getParam('s');
 END = getParam('e');
 
@@ -101,6 +102,10 @@ $(document).ready(function() {
         var firstScriptTag = document.getElementsByTagName('script')[0];
         firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
     } else showGif();
+
+    if (TEXT !== 'null') {
+        $('#message').html(TEXT).show();
+    }
 
     // -------------------------------------------------------------------------------------
     // Events
