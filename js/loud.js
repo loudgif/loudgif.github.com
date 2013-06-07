@@ -105,6 +105,19 @@ function onPlayerStateChange(event) {
 $(document).ready(function() {
 
 
+    // Init clipboard object
+    ZeroClipboard.setDefaults( {
+        moviePath: '/js/zeroclipboard/ZeroClipboard.swf',
+        hoverClass: 'copy-is-hover',
+        activeClass: 'copy-is-active'
+    });
+    var clip = new ZeroClipboard($("#copy-loudgif"));
+    clip.on( 'complete', function ( client, args ) {
+        $('#copy-loudgif').html('COPIED!');
+    } );
+
+
+
     function get_short_url(long_url, login, api_key, func)
     {
         $.getJSON(
@@ -188,6 +201,15 @@ $(document).ready(function() {
         }
     }
 
+    // Reset form
+    $('#another').on('click', function(){
+        $('#created').fadeOut(ANIM_SPEED, function(){
+            $('#newLoudgif').fadeIn(ANIM_SPEED);
+        });
+        $('#newLoudgif .field input').val('');
+    });
+
+    // Validate form
     $("#newLoudgif").validate({
         rules: {
             loudimage: {
@@ -218,11 +240,16 @@ $(document).ready(function() {
             }
         },
         submitHandler: function(form) {
-            var loudgif = {
+            var $submit = $('#submit'),
+                loudgif = {
                 gif:    escape($('#loudimage').val()),
                 video:  parseYoutubeId($('#loudvideo').val()),
                 text:   escape($('#loudtext').val())
             };
+
+            // Make submit loading style
+            var submitText = $submit.val();
+            $submit.addClass('loading').html('LOUDGIFIN\'');
 
             // Build string
             var loudgif_url = 'http://loudgif.com/?g=' + loudgif.gif + '&v=' + loudgif.video;
@@ -240,7 +267,22 @@ $(document).ready(function() {
                 },
                 function(response)
                 {
+                    // Reset buttons
+                    $submit.val(submitText).removeClass('loading');
+                    $('#copy-loudgif').html('COPY!');
+
+                    // Hide form, show url
+                    $('#newLoudgif').fadeOut(ANIM_SPEED, function(){
+                        $('#created').fadeIn(ANIM_SPEED);
+                    });
+
                     var bitlyUrl = response.data.url;
+
+                    $('#new-loudgif-url')
+                        .attr('href',bitlyUrl)
+                        .html(bitlyUrl);
+
+                    // console.log(bitlyUrl);
                 }
             );
             // window.location = loudgif_url;

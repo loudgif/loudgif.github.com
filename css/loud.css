@@ -11,7 +11,7 @@ html, body {
 }
 
 a, input {
-    transition: all 200ms ease-in;
+    transition: background 200ms ease-in;
 }
 
 a {
@@ -200,9 +200,49 @@ h1#message {
     padding-top: 30px;
 }
 
+#create #created {
+    color: #fff;
+    font-weight: 800;
+    margin-top: 10px;
+}
+
+#create #created h2 {
+    font-size: 50px;
+    font-style: italic;
+}
+
+#create #created .url {
+    background: #fff;
+    border-radius: 4px;
+    line-height: 30px;
+    margin: 20px 0;
+}
+
+#create #created .url a#new-loudgif-url {
+    color: #FF0082;
+    font-size: 24px;
+}
+
+#create .copy {
+    background: #00FF7E;
+    color: #fff !important;
+    border-radius: 4px;
+    float: right;
+    margin: -4px -4px 0 0;
+    padding: 5px 10px;
+    text-decoration: none !important;
+}
+
+#create .copy-is-hover {
+    background: #FF0082;
+    cursor: pointer;
+}
+
+
 /* Forms */
 
 label, .button {
+    border: none;
     display: block;
     font-weight: 800;
     line-height: 1.5em;
@@ -219,7 +259,7 @@ label.error {
     color: #F8EB47;
 }
 
-input {
+input, .button, button {
     font-family: 'Open Sans', Helvetica, sans-serif;
     border: none;
 }
@@ -229,21 +269,20 @@ input[type=text] {
     border: none;
     border-radius: 2px;
     color: #FF0082;
-    font-size: 16px;
+    font-size: 18px;
     font-weight: 400;
     padding: 12px;
     width: 100%;
 }
 
 .button {
-    /*background: rgba(0,0,0,0.8);*/
     background: #00FFFD;
     border-bottom: 2px solid #B3005B;
     border-radius: 4px;
     color: rgba(0,0,0,0.6);
+    cursor: pointer;
     font-size: 24px;
     font-weight: 800;
-    /*font-style: italic;*/
     padding: 15px;
     text-align: center;
     width: 100%;
@@ -251,6 +290,16 @@ input[type=text] {
 
 .button:hover {
     background: #00FF7E;
+}
+
+.button:active {
+    border-bottom: none;
+    border-top: 2px solid #B3005B;
+}
+
+.button.loading {
+    background: rgba(0,0,0,0.8);
+    border: none;
 }
 
 /* Mobile */
