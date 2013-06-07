@@ -76,10 +76,10 @@ function onYouTubeIframeAPIReady() {
 }
 
 function onPlayerReady(event) {
+    event.target.playVideo();
     setTimeout(function() {
         showGif();
-    }, 200);
-    event.target.playVideo();
+    }, 300);
 }
 
 function onPlayerPlaybackQualityChange(event){
@@ -103,6 +103,26 @@ function onPlayerStateChange(event) {
 // }
 
 $(document).ready(function() {
+
+
+    function get_short_url(long_url, login, api_key, func)
+    {
+        $.getJSON(
+            "http://api.bitly.com/v3/shorten?callback=?",
+            {
+                "format": "json",
+                "apiKey": api_key,
+                "login": login,
+                "longUrl": long_url
+            },
+            function(response)
+            {
+                func(response.data.url);
+            }
+        );
+    }
+
+
 
     if (VIDEOID !== 'null') {
         // Init YouTube Video
@@ -168,12 +188,6 @@ $(document).ready(function() {
         }
     }
 
-    // Create form submit
-    // $('#submit').click(function() {
-    //     if($('#input-image').)
-    //     return false;
-    // });
-
     $("#newLoudgif").validate({
         rules: {
             loudimage: {
@@ -217,8 +231,19 @@ $(document).ready(function() {
                 loudgif_url += '&t=' + loudgif.text;
             }
 
-
-            console.log(loudgif_url);
+            $.getJSON(
+                "https://api-ssl.bitly.com/v3/shorten?callback=?",
+                {
+                    "format": "json",
+                    "access_token": '50adfb7be005f4a3d8f8005ff98939e844016675',
+                    "longUrl": loudgif_url
+                },
+                function(response)
+                {
+                    var bitlyUrl = response.data.url;
+                }
+            );
+            // window.location = loudgif_url;
 
             return false;
         }
