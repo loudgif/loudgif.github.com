@@ -59,7 +59,7 @@ function onPlayerReady(event) {
     event.target.playVideo();
     setTimeout(function() {
         showGif();
-    }, 300);
+    }, 1500);
 }
 
 $(document).ready(function() {
@@ -140,6 +140,23 @@ $(document).ready(function() {
 
     $('#wrapper').on('click',function(){
         toggleScreen('off');
+    });
+
+    $('#toggle-video').on('click',function() {
+        if($(this).data('playing') === true) {
+            player.pauseVideo();
+            $(this)
+                .removeClass('icon-sound')
+                .addClass('icon-mute')
+                .data('playing',false);
+
+        } else {
+            player.playVideo();
+            $(this)
+                .addClass('icon-sound')
+                .removeClass('icon-mute')
+                .data('playing',true);
+        }
     });
 
     $(window).scroll(function (e) {

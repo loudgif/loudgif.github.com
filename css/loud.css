@@ -6,7 +6,7 @@ html, body {
     font-family: 'Open Sans', Helvetica, sans-serif;
     height: 100%;
     width: 100%;
-    background: #333;
+    background: #000;
     /*overflow: hidden;*/
 }
 
@@ -162,6 +162,11 @@ h1#message {
     background: rgba(256, 0, 130, 1);
 }
 
+#meta h1 {
+    float: left;
+    margin: 0;
+}
+
 #meta .logo {
     background: #000;
     color: #fff;
@@ -175,8 +180,17 @@ h1#message {
 #meta [class*="icon-"] {
     font-size: 0px;
 }
+
 #meta [class*="icon-"]:before {
     font-size: 24px;
+}
+
+#meta span {
+    display: inline-block;
+    float: right;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 16px;
+    padding-left: 10px;
 }
 
 #meta .el.square {
