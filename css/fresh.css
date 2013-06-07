@@ -70,17 +70,17 @@ p {
 
 /* Links */
 a {
-  color:#77c453;
+  color:#FF0082;
   text-decoration:none;
   }
   a:visited {
-    color:#9ed485;
+    color:#FF0082;
     }
   a:hover {
-    color:#54af29;
+    color:#82FF00;
     }
   a:active {
-    color:#9ed485;
+    color:#FF1A8F;
     }
 
 abbr {
@@ -346,5 +346,5 @@ Details: http://www.positioniseverything.net/easyclearing.html
   .pad4,
   .pad4h { padding-left:20px; padding-right:20px; }
   .pad8 { padding:40px 20px; }
-  .hide-mobile { display:none; }
+  .hide-mobile { display:none !important; }
   .show-mobile { display:block; }

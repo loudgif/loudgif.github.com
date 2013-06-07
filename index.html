@@ -41,8 +41,14 @@
 </div>
 
 <div id="info" class="black offscreen">
-    <div class="col6 pad2 el">
-        Left
+    <div id="information" class="col6 el">
+
+        <h1>GIFS + SOUND = AW YIS.</h1>
+
+        <p class="big">Let's bring the internet back to what really matters: delicious gruel for our short attention span minds.</p>
+
+        <p>This is a project by <a href="http://twitter.com/heyitsgarrett">Garrett</a>, who probably had far better things to do.</p>
+
     </div>
     <div id="create" class="col6 pad2 el bright">
         <form action="" method="get" id="newLoudgif" name="newLoudgif" class="">
@@ -51,8 +57,15 @@
                 <input type="text" id="loudimage" name="loudimage" />
             </div>
             <div class="field clearfix">
-                <label for="loudvideo">YouTube URL</label>
-                <input type="text" id="loudvideo" name="loudvideo" />
+                <div class="col8">
+                    <label for="loudvideo">YouTube URL</label>
+                    <input type="text" id="loudvideo" name="loudvideo" />
+                </div>
+                <div class="col3 margin1">
+                    <label for="loudstart">Start at:</label>
+                    <input type="text" id="loudstart" name="loudstart" value="0" maxlength="5" />
+                    <div class="extra hide-mobile">SECONDS</div>
+                </div>
             </div>
             <div class="field clearfix">
                 <label for="loudtext">Text <span>(Totally optional)</span></label>

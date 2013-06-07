@@ -16,19 +16,30 @@ a, input {
 
 a {
     color: black;
+    transition: color 100ms ease-in;
 }
 
 a:hover {
-    color: #FF0082;
+    color: #82FF00;
 }
 
 h1, h2, h3, h4, h5, h6 {
-
+    margin-bottom: 20px;
 }
 
 h1 {
     font-weight: 800;
     font-style: italic;
+}
+
+p {
+    font-size: 18px;
+    line-height: 1.6em;
+    margin-bottom: 30px;
+}
+
+p.big {
+    font-size: 24px;
 }
 
 /* Share classes */
@@ -180,18 +191,43 @@ h1#message {
 
 /* Information section */
 
-#info {
+#information {
+    padding: 30px 20px;
+}
+
+#information h1 {
+    color: #333;
+    font-size: 40px;
+    margin-bottom: 30px;
 }
 
 /* Create section */
 #create .field {
     width: 100%;
     margin-bottom: 15px;
+    position: relative;
 }
 
 #create #loudtext {
     font-weight: 800;
     font-style: italic;
+}
+
+#create #loudstart {
+    font-weight: 800;
+}
+
+#create .extra {
+    color: #ccc;
+    display: block;
+    font-size: 14px;
+    font-weight: 800;
+    position: absolute;
+    top: 45px;
+    right: 30px;
+    text-align: right;
+    height: 20px;
+    width: 50px;
 }
 
 #create .submit {
@@ -220,7 +256,7 @@ h1#message {
 
 #create #created .url a#new-loudgif-url {
     color: #FF0082;
-    font-size: 24px;
+    font-size: 20px;
 }
 
 #create .copy {

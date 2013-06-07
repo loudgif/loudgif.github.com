@@ -17,11 +17,11 @@ END = getParam('e');
 // Return defaults
 // TODO: Make this intro page instead
 if (VIDEOID === 'null') {
-    VIDEOID = 'http://www.youtube.com/watch?v=s7L2PVdrb_8';
+    VIDEOID = 's7L2PVdrb_8';
 }
 
 if (GIFID === 'null') {
-    GIFID = 'http://i.imgur.com/FvKyA.gif';
+    GIFID = escape('http://i.imgur.com/FvKyA.gif');
 }
 
 if (START === 'null') {
@@ -68,9 +68,7 @@ function onYouTubeIframeAPIReady() {
         },
         events: {
             'onReady': onPlayerReady,
-            'onPlaybackQualityChange': onPlayerPlaybackQualityChange,
-            'onStateChange': onPlayerStateChange,
-            'onError': onPlayerError
+            // 'onError': onPlayerError
         }
     });
 }
@@ -80,22 +78,6 @@ function onPlayerReady(event) {
     setTimeout(function() {
         showGif();
     }, 300);
-}
-
-function onPlayerPlaybackQualityChange(event){
-
-}
-
-function onPlayerError(event) {
-
-}
-
-// var done = false;
-function onPlayerStateChange(event) {
-// if (event.data == YT.PlayerState.PLAYING && !done) {
-//   setTimeout(stopVideo, 6000);
-//   done = true;
-// }
 }
 
 $(document).ready(function() {
@@ -156,8 +138,10 @@ $(document).ready(function() {
             $meta.addClass('active');
 
             // Distance from gif = quieter
-            var volume = 100 - (($(this).scrollTop() / $('body').height()) * 100);
-            player.setVolume(volume);
+            if(player) {
+                var volume = 100 - (($(this).scrollTop() / $('body').height()) * 100);
+                player.setVolume(volume);
+            }
 
         } else {
             $meta.removeClass('active');
@@ -189,6 +173,7 @@ $(document).ready(function() {
             $('#newLoudgif').fadeIn(ANIM_SPEED);
         });
         $('#newLoudgif .field input').val('');
+        $('#loudstart').val(0);
     });
 
     // Validate form
@@ -201,6 +186,10 @@ $(document).ready(function() {
             loudvideo: {
                 required: true,
                 url: true
+            },
+            loudstart: {
+                required: true,
+                maxlength: 5
             },
             loudtext: {
                 required: false,
@@ -216,6 +205,10 @@ $(document).ready(function() {
                 required: 'What\'s a loudgif without sound?',
                 url: 'This has to be a URL'
             },
+            loudstart: {
+                required: '',
+                maxlength: ''
+            },
             loudtext: {
                 required: false,
                 maxlength: 'Sorry, we cut you off at 200 characters'
@@ -226,6 +219,7 @@ $(document).ready(function() {
                 loudgif = {
                 gif:    escape($('#loudimage').val()),
                 video:  parseYoutubeId($('#loudvideo').val()),
+                start:  parseInt($('#loudstart').val()),
                 text:   escape($('#loudtext').val())
             };
 
@@ -239,6 +233,10 @@ $(document).ready(function() {
             if(loudgif.text !== '') {
                 loudgif_url += '&t=' + loudgif.text;
             }
+            if(loudgif.start > 0) {
+                loudgif_url += '&s=' + loudgif.start;
+            }
+
 
             $.getJSON(
                 "https://api-ssl.bitly.com/v3/shorten?callback=?",
