@@ -114,6 +114,9 @@ $(document).ready(function() {
         $('#message').html(TEXT).show();
     }
 
+    // Update meta tags
+    $('.meta-image').attr('content', unescape(GIFID));
+
     // -------------------------------------------------------------------------------------
     // Events
 
