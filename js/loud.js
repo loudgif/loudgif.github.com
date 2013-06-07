@@ -14,24 +14,6 @@ TEXT = getParam('t');
 START = getParam('s');
 END = getParam('e');
 
-// Return defaults
-// TODO: Make this intro page instead
-if (VIDEOID === 'null') {
-    VIDEOID = 's7L2PVdrb_8';
-}
-
-if (GIFID === 'null') {
-    GIFID = escape('http://i.imgur.com/FvKyA.gif');
-}
-
-if (START === 'null') {
-    START = 0;
-}
-
-if (END === 'null') {
-    END = 0;
-}
-
 
 // Misc Functions
 
@@ -82,6 +64,29 @@ function onPlayerReady(event) {
 
 $(document).ready(function() {
 
+
+    // Return defaults
+    // TODO: Make this intro page instead
+    if (VIDEOID === 'null') {
+        VIDEOID = 's7L2PVdrb_8';
+    } else {
+        $('#loudvideo').val(unescape('http://www.youtube.com/watch?v=' + VIDEOID));
+    }
+
+    if (GIFID === 'null') {
+        GIFID = escape('http://i.imgur.com/FvKyA.gif');
+    } else {
+        $('#loudimage').val(GIFID);
+    }
+
+    if (START === 'null') {
+        START = 0;
+    }
+
+    if (END === 'null') {
+        END = 0;
+    }
+
     // Init clipboard object
     ZeroClipboard.setDefaults( {
         moviePath: '/js/zeroclipboard/ZeroClipboard.swf',
@@ -119,6 +124,10 @@ $(document).ready(function() {
         $meta = $('#meta'),
         $wrapper = $('#wrapper');
 
+    $("input[type=text]").click(function() {
+        $(this).select();
+    });
+
     // Information section
     $('.show-screen').on('click',function(){
         if($meta.hasClass('active')) {
@@ -139,7 +148,14 @@ $(document).ready(function() {
 
             // Distance from gif = quieter
             if(player) {
-                var volume = 100 - (($(this).scrollTop() / $('body').height()) * 100);
+
+                var wintop = $(window).scrollTop(),
+                    docheight = $(document).height(),
+                    winheight = $(window).height();
+
+
+                var volume = 100 - ((wintop/(docheight-winheight))*100);
+                if(volume < 30) { volume = 30; }
                 player.setVolume(volume);
             }
 

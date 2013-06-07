@@ -163,13 +163,13 @@ h1#message {
 }
 
 #meta .logo {
+    background: #000;
+    color: #fff;
     font-size: 24px;
     padding: 0 20px;
 }
 
 #meta.active .logo {
-    background: #000;
-    color: #fff;
 }
 
 #meta [class*="icon-"] {
