@@ -17,7 +17,7 @@ END = getParam('e');
 // Return defaults
 // TODO: Make this intro page instead
 if (VIDEOID === 'null') {
-    // VIDEOID = 's7L2PVdrb_8';
+    VIDEOID = 'http://www.youtube.com/watch?v=s7L2PVdrb_8';
 }
 
 if (GIFID === 'null') {
@@ -98,12 +98,7 @@ function onPlayerStateChange(event) {
 // }
 }
 
-// function stopVideo() {
-//   player.stopVideo();
-// }
-
 $(document).ready(function() {
-
 
     // Init clipboard object
     ZeroClipboard.setDefaults( {
@@ -111,31 +106,12 @@ $(document).ready(function() {
         hoverClass: 'copy-is-hover',
         activeClass: 'copy-is-active'
     });
+
     var clip = new ZeroClipboard($("#copy-loudgif"));
+
     clip.on( 'complete', function ( client, args ) {
         $('#copy-loudgif').html('COPIED!');
     } );
-
-
-
-    function get_short_url(long_url, login, api_key, func)
-    {
-        $.getJSON(
-            "http://api.bitly.com/v3/shorten?callback=?",
-            {
-                "format": "json",
-                "apiKey": api_key,
-                "login": login,
-                "longUrl": long_url
-            },
-            function(response)
-            {
-                func(response.data.url);
-            }
-        );
-    }
-
-
 
     if (VIDEOID !== 'null') {
         // Init YouTube Video
@@ -144,6 +120,7 @@ $(document).ready(function() {
         tag.src = "https://www.youtube.com/iframe_api";
         var firstScriptTag = document.getElementsByTagName('script')[0];
         firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
     } else showGif();
 
     if (TEXT !== 'null') {
@@ -177,6 +154,11 @@ $(document).ready(function() {
     $(window).scroll(function (e) {
         if($(this).scrollTop() > 0) {
             $meta.addClass('active');
+
+            // Distance from gif = quieter
+            var volume = 100 - (($(this).scrollTop() / $('body').height()) * 100);
+            player.setVolume(volume);
+
         } else {
             $meta.removeClass('active');
         }
