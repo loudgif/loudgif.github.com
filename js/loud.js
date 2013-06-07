@@ -59,7 +59,7 @@ function onPlayerReady(event) {
     event.target.playVideo();
     setTimeout(function() {
         showGif();
-    }, 1500);
+    }, 1000);
 }
 
 $(document).ready(function() {
