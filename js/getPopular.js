@@ -27,11 +27,11 @@ var loudgifs = [];
 
                         loudgifs.push(loudgif);
 
-                        console.log(JSON.stringify(loudgifs));
-
+                        $('body').html(JSON.stringify(loudgifs));
 
                     }
                 );
+
             }
 
 
