@@ -49,6 +49,15 @@ p.big {
     color: #fff;
 }
 
+.black a {
+    color: #FF0082;
+    font-weight: bold;
+}
+
+.black a:hover {
+    color: white;
+}
+
 .bright {
     background: #FF0082;
     color: #fff;
