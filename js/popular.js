@@ -10,15 +10,16 @@ $(document).ready(function() {
 var loudgifs = [];
 
     $.getJSON(
-        'js/popular.json',
+        'https://api.github.com/gists/a9f979bd1d815d2d9293',
         {
             'format': 'json'
         },
         function(response) {
-            var $list = $('#popular-list');
+            var popular = eval(response.files['popular.js'].content),
+                $list = $('#popular-list');
 
-            for(var i=0; i<response.length; i++) {
-                var lg = response[i],
+            for(var i=0; i<popular.length; i++) {
+                var lg = popular[i],
                     $loudgif = $('<a href="http://a.loudgif.com/' + lg.user_hash + '" class="col12 clearfix">'),
                     image_url = getParam('g',lg.long_url);
 
