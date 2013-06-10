@@ -50,7 +50,7 @@ function onYouTubeIframeAPIReady() {
         },
         events: {
             'onReady': onPlayerReady,
-            // 'onError': onPlayerError
+            'onError': onPlayerError
         }
     });
 }
@@ -62,8 +62,12 @@ function onPlayerReady(event) {
     }, 1000);
 }
 
-$(document).ready(function() {
+function onPlayerError(event) {
+    // console.log('damn')
+    showError('Couldn\'t load sound. SILENTGIF!');
+}
 
+$(document).ready(function() {
 
     // Return defaults
     // TODO: Make this intro page instead
@@ -187,6 +191,10 @@ $(document).ready(function() {
     // Debug init
     if(getParam('sc') !== 'null') {
         toggleScreen('on');
+    }
+
+    function showError(error) {
+        console.log(error);
     }
 
     function toggleScreen(direction) {

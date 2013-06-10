@@ -352,6 +352,40 @@ input[type=text] {
     border: none;
 }
 
+/* Popular page */
+
+body#popular {
+    color: #fff;
+}
+
+body#popular .container {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+body#popular h1 {
+    font-size: 50px;
+    padding: 40px;
+}
+
+
+#popular-list a {
+    background-color: transparent;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: white;
+    display: block;
+    font-size: 40px;
+    font-style: italic;
+    font-weight: 800;
+    height: 450px;
+    line-height: 450px;
+    margin-bottom: 20px;
+    text-align: center;
+    width: 100%;
+}
+
 /* Mobile */
 
 @media only screen and (max-width:640px) {
