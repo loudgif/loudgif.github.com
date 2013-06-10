@@ -28,7 +28,17 @@ function parseYoutubeId(url) {
 }
 
 function showGif() {
-    $('#gif').css('background-image','url(' + unescape(GIFID) + ')');
+    $("<img/>")
+        .attr("src", unescape(GIFID))
+        .load(function() {
+
+            $('#gif').css('background-image','url(' + unescape(GIFID) + ')');
+
+            if(this.width < this.height) {
+                $('#gif').css('background-size','contain');
+            }
+
+        });
 }
 
 // Youtube Embed Code
@@ -98,10 +108,10 @@ $(document).ready(function() {
         activeClass: 'copy-is-active'
     });
 
-    var clip = new ZeroClipboard($("#copy-loudgif"));
+    var clip = new ZeroClipboard($(".copy"));
 
-    clip.on( 'complete', function ( client, args ) {
-        $('#copy-loudgif').html('COPIED!');
+    clip.on( 'complete', function(client, args) {
+        $('.copy').html('COPIED!');
     } );
 
     if (VIDEOID !== 'null') {
@@ -124,7 +134,8 @@ $(document).ready(function() {
     // -------------------------------------------------------------------------------------
     // Events
 
-    var ANIM_SPEED = 300,       // milliseconds
+    var URL_INITED = false,
+        ANIM_SPEED = 300,       // milliseconds
         OFFSCREEN_HEIGHT = 60,  // percentage
         windowWidth = (window.innerWidth > 0) ? window.innerWidth : screen.width,
         $info = $('#info'),
@@ -135,6 +146,13 @@ $(document).ready(function() {
         $(this).select();
     });
 
+    // Modal ex button
+    $('.modal .ex').on('click',function(){
+        $('.modal').animate({
+            top: '-100%'
+        }, ANIM_SPEED);
+    })
+
     // Information section
     $('.show-screen').on('click',function(){
         if($meta.hasClass('active')) {
@@ -143,6 +161,44 @@ $(document).ready(function() {
             toggleScreen('on');
         }
         return false;
+    });
+
+    // Share button
+    $('#share').on('click',function(){
+        if(URL_INITED == false) {
+
+            $.getJSON(
+                "https://api-ssl.bitly.com/v3/shorten?callback=?",
+                {
+                    "format": "json",
+                    "access_token": '50adfb7be005f4a3d8f8005ff98939e844016675',
+                    "longUrl": document.URL
+                },
+                function(response) {
+
+                    var bitlyUrl = response.data.url;
+
+                    if(bitlyUrl !== undefined) {
+                        $('#share-url-to-copy').html(bitlyUrl);
+                    } else {
+                        $('#share-url-to-copy').html('http://loudgif.com');
+                    }
+
+                    // Show modal
+                    $('.modal').animate({
+                        top: '25%'
+                    }, ANIM_SPEED);
+
+                    URL_INITED = true;
+                }
+            );
+        } else {
+            // Show modal
+            $('.modal').animate({
+                top: '25%'
+            }, ANIM_SPEED);
+        }
+
     });
 
     $('#wrapper').on('click',function(){

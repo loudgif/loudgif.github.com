@@ -29,15 +29,21 @@
 
 <div id="wrapper">
 
-    <h1 id="message" class="hide">
-    </h1>
+    <h1 id="message" class="hide"></h1>
+
+    <div id="share-url" class="modal">
+        <span class="ex icon-ex">&nbsp;</span>
+        <span id="share-url-to-copy"></span>
+        <a href="#" id="copy-share-url" class="copy" data-clipboard-text="COPY!" data-clipboard-target="share-url-to-copy">COPY!</a>
+    </div>
+
     <div id="gif"></div>
 
     <div id="meta" class="clearfix">
         <div class="col6">
             <h1><a href="#" id="logo" class="el logo show-screen">LOUDGIF</a></h1>
             <a href="#" id="toggle-video" class="el square icon-sound" data-playing="true">&nbsp;</a>
-            <!-- <a href="/popular" id="share" class="el square icon-heart">&nbsp;</a> -->
+            <a href="#" id="share" class="el square icon-link">&nbsp;</a>
         </div>
         <div class="col6 right">
             <a id="new-loudgif" href="#" class="el loud show-screen">
@@ -54,7 +60,7 @@
 
         <p class="big">Let's bring the internet back to what really matters: delicious gruel for our short attention span minds.</p>
 
-        <p class="big"><a href="/popular">See most popular loudgifs.</a></p>
+        <p class="big"><a href="/popular">See the most popular loudgifs.</a></p>
 
         <p>This is a project by <a href="http://twitter.com/heyitsgarrett">Garrett</a>, who probably had far better things to do.</p>
 

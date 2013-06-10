@@ -63,6 +63,39 @@ p.big {
     color: #fff;
 }
 
+.modal {
+    background: #fff;
+    border-radius: 4px;
+    left: 25%;
+    padding: 20px;
+    position: absolute;
+    text-align: center;
+    top: -100%;
+    width: 50%;
+    z-index: 5;
+}
+
+.modal .ex {
+    background: #ccc;
+    border: 3px solid #fff;
+    border-radius: 50%;
+    color: white;
+    display: block;
+    font-size: 15px;
+    height: 35px;
+    left: -15px;
+    padding: 7px;
+    position: absolute;
+    text-align: center;
+    top: -15px;
+    width: 35px;
+}
+
+.modal .ex:hover {
+    background: #FF0082;
+    cursor: pointer;
+}
+
 .offscreen {
     position: absolute;
     height: 60%;
@@ -127,6 +160,18 @@ h1#message {
     top: 3%;
     width: 100%;
     z-index: 2;
+}
+
+#share-url {
+    font-size: 30px;
+    font-style: italic;
+    font-weight: 800;
+}
+
+#share-url .copy {
+    float: none;
+    font-size: 24px;
+    margin-left: 20px;
 }
 
 /* Meta Bar */
@@ -282,7 +327,7 @@ h1#message {
     font-size: 20px;
 }
 
-#create .copy {
+.copy {
     background: #00FF7E;
     color: #fff !important;
     border-radius: 4px;
@@ -292,7 +337,7 @@ h1#message {
     text-decoration: none !important;
 }
 
-#create .copy-is-hover {
+.copy-is-hover {
     background: #FF0082;
     cursor: pointer;
 }
