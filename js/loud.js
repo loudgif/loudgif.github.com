@@ -11,8 +11,8 @@ function getParam(name) {
 VIDEOID = getParam('v');
 GIFID = getParam('g');
 TEXT = getParam('t');
-START = getParam('s');
-END = getParam('e');
+START = parseInt(getParam('s'), 10) || 0;
+END = parseInt(getParam('e'), 10) || null;
 
 
 // Misc Functions
@@ -125,7 +125,7 @@ $(document).ready(function() {
     } else showGif();
 
     if (TEXT !== 'null') {
-        $('#message').html(TEXT).show();
+        $('#message').text(TEXT).show();
     }
 
     // Update meta tags
