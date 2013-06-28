@@ -10,12 +10,14 @@ $(document).ready(function() {
 var loudgifs = [];
 
     $.getJSON(
-        'https://api.github.com/gists/a9f979bd1d815d2d9293',
+        // 'https://api.github.com/gists/a9f979bd1d815d2d9293',
+        '/js/popular.json',
         {
             'format': 'json'
         },
         function(response) {
-            var popular = eval(response.files['popular.js'].content),
+            // var popular = eval(response.files['popular.js'].content),
+            var popular = response,
                 $list = $('#popular-list');
 
             for(var i=0; i<popular.length; i++) {
