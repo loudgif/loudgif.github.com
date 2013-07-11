@@ -44,7 +44,7 @@ function showGif() {
                 if(this.width < this.height) {
                     $('#gif').css('background-size','contain');
                 }
-            },500);
+            },250);
 
         });
 }
