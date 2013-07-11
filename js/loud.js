@@ -32,6 +32,9 @@ function showGif() {
         .attr("src", unescape(GIFID))
         .load(function() {
 
+            // Play video
+            player.playVideo();
+
             $('#gif').removeClass('loading');
 
             $('#gif').css('background-image','url(' + unescape(GIFID) + ')');
@@ -68,10 +71,8 @@ function onYouTubeIframeAPIReady() {
 }
 
 function onPlayerReady(event) {
-    event.target.playVideo();
-    setTimeout(function() {
-        showGif();
-    }, 1000);
+    player.pauseVideo();
+    showGif();
 }
 
 function onPlayerError(event) {
