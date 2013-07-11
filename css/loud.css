@@ -149,6 +149,11 @@ p.big {
     z-index: 1;
 }
 
+#gif.loading {
+    background: transparent url('../img/loading.gif') center center no-repeat;
+    background-size: 31px 31px;
+}
+
 h1#message {
     background: none;
     color: white;

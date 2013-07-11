@@ -32,6 +32,8 @@ function showGif() {
         .attr("src", unescape(GIFID))
         .load(function() {
 
+            $('#gif').removeClass('loading');
+
             $('#gif').css('background-image','url(' + unescape(GIFID) + ')');
 
             if(this.width < this.height) {
@@ -100,6 +102,9 @@ $(document).ready(function() {
     if (END === 'null') {
         END = 0;
     }
+
+    // Start loading
+    $('#gif').addClass('loading');
 
     // Init clipboard object
     ZeroClipboard.setDefaults( {
