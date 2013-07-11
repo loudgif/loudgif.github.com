@@ -22,19 +22,25 @@ var loudgifs = [];
 
             for(var i=0; i<popular.length; i++) {
                 var lg = popular[i],
-                    $loudgif = $('<a href="http://a.loudgif.com/' + lg.user_hash + '" class="col12 clearfix">'),
+                    $loudgif = $('<a href="http://a.loudgif.com/' + lg.user_hash + '" class="col12 clearfix" data-original>'),
                     image_url = getParam('g',lg.long_url);
 
-                $loudgif
-                    .css('background-image', 'url(' + image_url + ')')
-                    .append('<div class="text">' +
-                                '<span class="num">#' + (i+1) + '</span>' +
-                                // '<span class="url">a.loudgif.com/' + lg.user_hash + '</span>' +
-                            '</div>')
+                if(image_url !== 'null') {
+                    $loudgif
+                        .css('background-image', 'url(' + image_url + ')')
+                        .append('<div class="text">' +
+                                    '<span class="num">#' + (i+1) + '</span>' +
+                                    // '<span class="url">a.loudgif.com/' + lg.user_hash + '</span>' +
+                                '</div>')
 
 
-                $loudgif.appendTo('#popular-list');
+                    $loudgif.appendTo('#popular-list');
+                }
             }
+
+            $list.zload({
+                unload: 'true'
+            });
 
         }
     );

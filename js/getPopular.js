@@ -8,7 +8,7 @@ var loudgifs = [];
         {
             'format': 'json',
             'access_token': '50adfb7be005f4a3d8f8005ff98939e844016675',
-            'limit': '50'
+            'limit': '80'
         },
         function(response) {
 

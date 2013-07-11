@@ -79,17 +79,17 @@ function onPlayerError(event) {
 
 $(document).ready(function() {
 
-    // Return defaults
-    // TODO: Make this intro page instead
-    if (VIDEOID === 'null') {
-        VIDEOID = 's7L2PVdrb_8';
-    } else {
+    // If no variables provided, redirect to welcome/popular page
+    if (VIDEOID == 'null' && GIFID == 'null') {
+        window.location = document.URL + 'hello.html';
+    }
+
+
+    if (VIDEOID !== 'null') {
         $('#loudvideo').val(unescape('http://www.youtube.com/watch?v=' + VIDEOID));
     }
 
-    if (GIFID === 'null') {
-        GIFID = escape('http://i.imgur.com/FvKyA.gif');
-    } else {
+    if (GIFID !== 'null') {
         $('#loudimage').val(GIFID);
     }
 
