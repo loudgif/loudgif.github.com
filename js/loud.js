@@ -35,13 +35,16 @@ function showGif() {
             // Play video
             player.playVideo();
 
-            $('#gif').removeClass('loading');
+            // Set timeout because Youtube is an asshole
+            setTimeout(function(){
+                $('#gif').removeClass('loading');
 
-            $('#gif').css('background-image','url(' + unescape(GIFID) + ')');
+                $('#gif').css('background-image','url(' + unescape(GIFID) + ')');
 
-            if(this.width < this.height) {
-                $('#gif').css('background-size','contain');
-            }
+                if(this.width < this.height) {
+                    $('#gif').css('background-size','contain');
+                }
+            },500);
 
         });
 }
