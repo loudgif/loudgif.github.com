@@ -27,7 +27,7 @@ function parseYoutubeId(url) {
     }
 }
 
-function showGif() {
+function loadGif() {
     $("<img/>")
         .attr("src", unescape(GIFID))
         .load(function() {
@@ -35,18 +35,17 @@ function showGif() {
             // Play video
             player.playVideo();
 
-            // Set timeout because Youtube is an asshole
-            setTimeout(function(){
-                $('#gif').removeClass('loading');
-
-                $('#gif').css('background-image','url(' + unescape(GIFID) + ')');
-
-                if(this.width < this.height) {
-                    $('#gif').css('background-size','contain');
-                }
-            },250);
-
         });
+}
+
+function showGif() {
+    $('#gif').removeClass('loading');
+
+    $('#gif').css('background-image','url(' + unescape(GIFID) + ')');
+
+    if(this.width < this.height) {
+        $('#gif').css('background-size','contain');
+    }
 }
 
 // Youtube Embed Code
@@ -68,19 +67,27 @@ function onYouTubeIframeAPIReady() {
         },
         events: {
             'onReady': onPlayerReady,
-            'onError': onPlayerError
+            'onError': onPlayerError,
+            'onStateChange': onPlayerStateChange
         }
     });
 }
 
 function onPlayerReady(event) {
     player.pauseVideo();
-    showGif();
+    loadGif();
 }
 
 function onPlayerError(event) {
     // console.log('damn')
     showError('Couldn\'t load sound. SILENTGIF!');
+}
+
+function onPlayerStateChange(event) {
+    // If state is playing, finally show gif
+    if(event.data === 1) {
+        showGif();
+    }
 }
 
 $(document).ready(function() {
