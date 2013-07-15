@@ -144,9 +144,6 @@ $(document).ready(function() {
         $('#message').text(TEXT).show();
     }
 
-    // Update meta tags
-    $('.meta-image').attr('content', unescape(GIFID));
-
     // -------------------------------------------------------------------------------------
     // Events
 
