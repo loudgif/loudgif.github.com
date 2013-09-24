@@ -48,6 +48,12 @@ function showGif() {
     }
 }
 
+function showError(error) {
+    console.log(error);
+    showGif();
+    $('#message').text('Error loading sound. SILENTGIF!').show();
+}
+
 // Youtube Embed Code
 
 var player;
@@ -260,10 +266,6 @@ $(document).ready(function() {
     // Debug init
     if(getParam('sc') !== 'null') {
         toggleScreen('on');
-    }
-
-    function showError(error) {
-        console.log(error);
     }
 
     function toggleScreen(direction) {
