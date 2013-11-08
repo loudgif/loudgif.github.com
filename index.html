@@ -37,7 +37,9 @@
         <a href="#" id="copy-share-url" class="copy" data-clipboard-text="COPY!" data-clipboard-target="share-url-to-copy">COPY!</a>
     </div>
 
-    <div id="gif"></div>
+    <div id="gif">
+        <div id="_giphy_tv" class="hidden"></div>
+    </div>
 
     <div id="meta" class="clearfix">
         <div class="col6">
@@ -112,6 +114,12 @@
     ga('create', 'UA-41561581-1', 'loudgif.com');
     ga('send', 'pageview');
 </script>
+
+        <script type="text/javascript">
+
+            var _giphy_tv_tag = getParam('gtv');
+
+        </script>
 
 </body>
 </html>

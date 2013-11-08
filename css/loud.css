@@ -63,6 +63,10 @@ p.big {
     color: #fff;
 }
 
+.hidden {
+    display: none;
+}
+
 .modal {
     background: #fff;
     border-radius: 4px;
@@ -143,6 +147,7 @@ p.big {
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
+    overflow: hidden;
     position: absolute;
     height: 100%;
     width: 100%;

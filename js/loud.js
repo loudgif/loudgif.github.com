@@ -10,6 +10,7 @@ function getParam(name) {
 
 VIDEOID = getParam('v');
 GIFID = getParam('g');
+GIPHY = getParam('gtv');
 TEXT = getParam('t');
 START = parseInt(getParam('s'), 10) || 0;
 END = parseInt(getParam('e'), 10) || null;
@@ -39,6 +40,11 @@ function loadGif() {
 }
 
 function showGif() {
+    // If giphy tv, show that and return
+    if(GIPHY !== 'null') {
+        return showGiphy();
+    }
+
     $('#gif').removeClass('loading');
 
     $('#gif').css('background-image','url(' + unescape(GIFID) + ')');
@@ -46,6 +52,15 @@ function showGif() {
     if(this.width < this.height) {
         $('#gif').css('background-size','contain');
     }
+}
+
+function showGiphy() {
+    var g = document.createElement('script'); g.type = 'text/javascript'; g.async = true;
+    g.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'giphy.com/static/js/widgets/tv.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(g, s);
+    
+    $('#_giphy_tv').show();
+    $('#gif').removeClass('loading');
 }
 
 function showError(error) {
