@@ -56,9 +56,9 @@ function showGif() {
 
 function showGiphy() {
     var g = document.createElement('script'); g.type = 'text/javascript'; g.async = true;
-    g.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'giphy.com/static/js/widgets/tv.js';
+    g.src = 'https://giphy.com/static/js/widgets/tv.js';
     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(g, s);
-    
+
     $('#_giphy_tv').show();
     $('#gif').removeClass('loading');
 }
@@ -118,11 +118,11 @@ $(document).ready(function() {
     if (VIDEOID === 'null') {
         VIDEOID = 's7L2PVdrb_8';
     } else {
-        $('#loudvideo').val(unescape('http://www.youtube.com/watch?v=' + VIDEOID));
+        $('#loudvideo').val(unescape('https://www.youtube.com/watch?v=' + VIDEOID));
     }
 
     if (GIFID === 'null') {
-        GIFID = escape('http://i.imgur.com/FvKyA.gif');
+        GIFID = escape('https://i.imgur.com/FvKyA.gif');
     } else {
         $('#loudimage').val(GIFID);
     }
@@ -329,7 +329,7 @@ $(document).ready(function() {
         messages: {
             loudimage: {
                 required: 'Need an image here, friend',
-                url: 'This has to be a URL. You know, HTTP:// and so on and so forth.'
+                url: 'This has to be a URL. You know, HTTPS:// and so on and so forth.'
             },
             loudvideo: {
                 required: 'What\'s a loudgif without sound?',
